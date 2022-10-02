@@ -8,14 +8,14 @@ import {connect} from 'react-redux';
 import {getActions} from '../../store/actions/auth.actions';
 import {useNavigate} from 'react-router-dom';
 
-const RegisterPage = () => {
+const RegisterPage = ({register}) => {
   const [mail, setMail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const history = useNavigate()
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleRegister = ({register}) => {
+  const handleRegister = () => {
     const userDetails = {
       mail,
       username,
