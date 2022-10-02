@@ -4,18 +4,24 @@ import AuthBox from "../../shared/components/AuthBox";
 import RegisterPageFooter from './RegisterPageFooter';
 import RegisterPageInputs from "./RegisterPageInputs";
 import {validateRegisterForm} from '../../shared/utils/validators';
+import {connect} from 'react-redux';
+import {getActions} from '../../store/actions/auth.actions';
+import {useNavigate} from 'react-router-dom';
 
 const RegisterPage = () => {
   const [mail, setMail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const history = useNavigate()
   const [isFormValid, setIsFormValid] = useState(false);
 
-  const handleRegister = () => {
-    console.log(mail)
-    console.log(username)
-    console.log(password)
+  const handleRegister = ({register}) => {
+    const userDetails = {
+      mail,
+      username,
+      password
+    };
+    register(userDetails, history)
   }
 
   useEffect(() => {
@@ -47,4 +53,10 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+const mapActionsToProps = (dispatch) => {
+  return {
+    ...getActions(dispatch)
+  }
+}
+
+export default connect(null, mapActionsToProps)(RegisterPage);

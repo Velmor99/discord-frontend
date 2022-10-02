@@ -4,20 +4,27 @@ import LoginPageFooter from "./LoginPageFooter";
 import LoginPageHeader from "./LoginPageHeader";
 import LoginPageInputs from "./LoginPageInputs";
 import {validateLoginForm} from '../../shared/utils/validators';
+import {connect} from 'react-redux';
+import {getActions} from '../../store/actions/auth.actions';
+import {useNavigate} from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({login}) => {
 
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+  const history = useNavigate()
 
   useEffect(() => {
     setIsFormValid(validateLoginForm({mail, password}));
   }, [mail, password, setIsFormValid])
 
   const handleLogin = () => {
-    console.log(mail)
-    console.log(password)
+    const userDetails = {
+      mail,
+      password
+    }
+    login(userDetails, history)
   };
 
   return (
@@ -34,4 +41,10 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+const mapActionsToProps = (dispatch) => {
+  return {
+    ...getActions(dispatch)
+  }
+}
+
+export default connect(null, mapActionsToProps)(LoginPage);
