@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
     case friendsActions.SET_FRIENDS:
       return {
         ...state,
-        friends: action.friends,
+        friends: [...action.friends],
       };
     case friendsActions.SET_ONLINE_USERS:
       return {

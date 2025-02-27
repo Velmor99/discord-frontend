@@ -7,6 +7,7 @@ const MainContainer = styled("div")({
   width: "100%",
 });
 
+//TODO fix mutate state (maybe online friends should be calculate on server side)
 const checkOnlineUsers = (friends = [], onlineUsers = []) => {
   friends.forEach((f) => {
     const isUserOnline = onlineUsers.find((user) => user.userId === f.id);

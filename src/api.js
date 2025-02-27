@@ -3,8 +3,7 @@ import {logout} from './shared/utils/auth';
 
 //axios configs
 const apiClient = axios.create({
-  baseURL: "http://localhost:5022/api",
-  timeout: 1000,
+  baseURL: "https://discord-backend-production-0974.up.railway.app/api"
 });
 
 //interceptors will work in every call to api

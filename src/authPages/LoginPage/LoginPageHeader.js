@@ -7,7 +7,7 @@ const LoginPageHeader = () => {
             Welcome Back!
         </Typography>
         <Typography sx={{color: '#b9bbbe'}}>
-            We are happy that ypu are with us!
+            We are happy that you are with us!
         </Typography>
         </>
     )

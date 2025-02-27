@@ -11,11 +11,11 @@ const reducer = (state = initialState, action) => {
     case chatActions.SET_CHOSEN_CHAT_DETAILS:
       return {
         ...state,
-        chatType: action.chatType,
         chosenChatDetails: action.chatDetails,
+        chatType: action.chatType,
         messages: [],
       };
-    case chatActions.SET_CHAT_TYPE:
+    case chatActions.SET_MESSAGES:
       return {
         ...state,
         messages: action.messages,
